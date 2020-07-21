@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration_Form</title>
+	<meta name="viewport" content="width=device-width,intial-scale=1">
+	<link rel="stylesheet" type="text/css" href="Registration_form.css">
+</head>
+<style >
+	div{
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+	margin-right: 500px;
+	margin-left: 500px;
+}
+input[type=text],[type=number],[type=email],[type=date], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px ;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 50%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px ;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+</style>
+
+<script>
+function validatefname(){  
+var fname=document.register.fname.value;
+if (fname==null || fname==""){  
+  alert("Name can't be blank");  
+  return false;  
+}
+}
+function validatelname(){  
+var lname=document.register.lname.value;  
+ if (lname==null || lname==""){  
+  alert("Name can't be blank");  
+  return false;  
+}
+}
+
+function validateemail()  
+{  
+var x=document.register.email.value;  
+var atposition=x.indexOf("@");  
+var dotposition=x.lastIndexOf(".");  
+if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+  alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
+  return false;  
+  }  
+}  
+
+function validatepnumber(){  
+var pnumber=document.register.pnumber.value;  
+if (isNaN(num)){  
+  document.getElementById("numloc").innerHTML="Enter Numeric value only";  
+  return false;  
+}else{  
+  return true;  
+  }  
+}
+
+function checkdate(register)
+  {
+
+    re = /^\d{1,2}\/\d{1,2}\/\d{4}$/;
+    if(form.startdate.value != '' && !form.startdate.value.match(re)) {
+      alert("Invalid date format: " + form.startdate.value);
+      form.startdate.focus();
+      return false;
+    }
+    re = /^\d{1,2}:\d{2}([ap]m)?$/;
+    if(form.starttime.value != '' && !form.starttime.value.match(re)) {
+      alert("Invalid time format: " + form.starttime.value);
+      form.starttime.focus();
+      return false;
+    }
+
+    alert("All input fields have been validated!");
+    return true;
+  }
+</script>
+<body>
+	<div>
+	<h2> Registration Form </h2>
+	<form name= "register">
+		<label for="fname">First Name</label><br>
+		<input type="text" id="fname" name="fname" onsubmit="return validatefname()"  ><br>
+		<label for= "lname">Last Name</label><br>
+		<input type="text" id="lname" name="lname" onsubmit="return validatelname()" ><br>
+		<label>E-Mail</label><br>
+		<input type="email" name="email" onsubmit="return validateemail() "><br>
+		<label>Phone Number</label><br>
+		<input type="number" name="pnumber" onsubmit="return validatepnumber()"><br>
+		<label>Date Of Birth</label><br>
+		<input type="Date" name="date" onsubmit="return checkdate()"><br>
+		<input type="submit" value="Submit"><br>
+	</form>
+	</div>
+</body>
+</html>
